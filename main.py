@@ -35,3 +35,6 @@ while(1):
     except sr.RequestError as e:
         print()
 
+
+
+
