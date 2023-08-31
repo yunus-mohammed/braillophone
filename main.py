@@ -1,40 +1,39 @@
-import speech_recognition as sr
-import queue
-import serial
-import time
+from vosk import Model, KaldiRecognizer
+import queue, serial, time
+import pyaudio
 
-arduino = serial.Serial(port='COM5', baudrate=115200, timeout=.1)
-r = sr.Recognizer()
+model = Model(r'D:\Projects\SpeechToText\model')
+recognizer = KaldiRecognizer(model, 16000)
+
+cap = pyaudio.PyAudio()
+stream = cap.open(format = pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8192)
+
+arduino = serial.Serial(port='COM7', baudrate=115200, timeout=.1)
+stream.start_stream()
 print("------------------------------------------------")
 print("         Press Ctrl+C to stop recording         ")
 print("------------------------------------------------")
 print()
 
-q = queue.Queue()
 
 def write_read(x):
     x = x.encode('utf-8')
     arduino.write(x)
+
+    
     time.sleep(0.05)
     data = arduino.readline()
     return data
 
-while(1):
-    with sr.Microphone() as source:
-        r.adjust_for_ambient_noise(source)
-        audio = r.listen(source)
 
-    try:
-        str1 = r.recognize_google(audio)
-        print(str1)
-        
-        value = write_read(str1)
+while True:
+    data = stream.read(4096)
+    # if len(data) == 0:
+    #     break
 
-    except sr.UnknownValueError:
-        print()
-    except sr.RequestError as e:
-        print()
-
-
-
-
+    if recognizer.AcceptWaveform(data):
+        text = recognizer.Result()
+        text = text[14:-3]
+        print(text)
+        value = write_read(text)
+        # print(value)
