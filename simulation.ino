@@ -1,347 +1,349 @@
+#include <Servo.h>
+Servo s1, s2, s3, s4, s5, s6;
+int pos;
+
 void setup ()
 {
   Serial.begin(115200);
   Serial.setTimeout(1);
-  pinMode(2, OUTPUT);
-  pinMode(3, OUTPUT);
-  pinMode(4, OUTPUT);
-  pinMode(7, OUTPUT);
-  pinMode(12, OUTPUT);
-  pinMode(13, OUTPUT);
-}
+  s1.attach(2);
+  s2.attach(3);
+  s3.attach(4);
+  s4.attach(7);
+  s5.attach(12);
+  s6.attach(13);
 
-void loop()
-{
+
+  s1.write(0);
+  s2.write(90);
+  s3.write(90);
+  s4.write(90);
+  s5.write(90);
+  s6.write(90);
+
+  delay(1000);
+
+}// f
+
+void loop() {
+
   while (!Serial.available());
   String str = Serial.readString();
-  // Serial.println(x);
   // String str = "hello";
+
   for(int i=0; str[i]!='\0'; i++)
   {
     switch(str[i])
-{
-case 'a':
+    {
 
-    digitalWrite(2, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    delay(500);
-break;
+    case ' ':
+    delay(1500);
+    break;
+    case 'a':
+    // s1.write()
+    s4.write(180);
+    delay(1000);
+    s4.write(90);
+    delay(1000);
+    break;
 
-case 'b':
+    case 'b':
+    s4.write(180);
+    s2.write(0);
+    delay(1000);
+    s4.write(90);
+    s2.write(90);
+    delay(1000);
+    break;
 
-    digitalWrite(2, HIGH);
-    digitalWrite(3, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    digitalWrite(3, LOW);
-    delay(500);
-break;
+    case 'c':
+    s4.write(180);
+    s5.write(180);
+    delay(1000);
+    s4.write(90);
+    s5.write(90);
+    delay(1000);
+    break;
 
-case 'c':
+    case 'd':
+    s4.write(180);
+    s5.write(180);
+    s6.write(180);
+    delay(1000);
+    s4.write(90);
+    s5.write(90);
+    s6.write(90);
+    delay(1000);
+    break;
 
-    digitalWrite(2, HIGH);
-    digitalWrite(7, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    digitalWrite(7, LOW);
-    delay(500);
-break;
+    case 'e':
+    s4.write(180);
+    s6.write(180);
+    delay(1000);
+    s4.write(90);
+    s6.write(90);
+    delay(1000);
+    break;
 
-case 'd':
+    case 'f':
+    s2.write(0);
+    s4.write(180);
+    s5.write(180);
+    delay(1000);
+    s2.write(90);
+    s4.write(90);
+    s5.write(90);
+    delay(1000);
+    break;
 
-    digitalWrite(2, HIGH);
-    digitalWrite(7, HIGH);
-    digitalWrite(12, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    digitalWrite(7, LOW);
-    digitalWrite(12, LOW);
-    delay(500);
-break;
 
-case 'e':
+    case 'g':
+    s2.write(0);
+    s4.write(180);
+    s5.write(180);
+    s6.write(180);
+    delay(1000);
+    s2.write(90);
+    s4.write(90);
+    s5.write(90);
+    s6.write(90);
+    delay(1000);
+    break;
 
-    digitalWrite(2, HIGH);
-    digitalWrite(12, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    digitalWrite(12, LOW);
-    delay(500);
-break;
 
-case 'f':
+    case 'h':
+    s2.write(0);
+    s4.write(180);
+    s6.write(180);
+    delay(1000);
+    s2.write(90);
+    s4.write(90);
+    s6.write(90);
+    delay(1000);
+    break;
 
-    digitalWrite(2, HIGH);
-    digitalWrite(3, HIGH);
-    digitalWrite(7, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    digitalWrite(3, LOW);
-    digitalWrite(7, LOW);
-    delay(500);
-break;
+    case 'i':
+    s2.write(0);
+    s5.write(180);
+    delay(1000);
+    s2.write(90);
+    s5.write(90);
+    delay(1000);
+    break;
 
-case 'g':
+    case 'j':
+    s2.write(0);
+    s5.write(180);
+    s6.write(180);
+    delay(1000);
+    s2.write(90);
+    s5.write(90);
+    s6.write(90);
+    delay(1000);
+    break;
 
-    digitalWrite(2, HIGH);
-    digitalWrite(3, HIGH);
-    digitalWrite(7, HIGH);
-    digitalWrite(12, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    digitalWrite(3, LOW);
-    digitalWrite(7, LOW);
-    digitalWrite(12, LOW);
-    delay(500);
-break;
+    case 'k':
+    s1.write(90);
+    s4.write(180);
+    delay(1000);
+    s1.write(0);
+    s4.write(90);
+    delay(1000);
+    break;
 
-case 'h':
+    case 'l':
+    s1.write(90);
+    s2.write(0);
+    s4.write(180);
+    delay(1000);
+    s1.write(0);
+    s2.write(90);
+    s4.write(90);
+    delay(1000);
+    break;
 
-    digitalWrite(2, HIGH);
-    digitalWrite(3, HIGH);
-    digitalWrite(12, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    digitalWrite(3, LOW);
-    digitalWrite(12, LOW);
-    delay(500);
-break;
+    case 'm':
+    s1.write(90);
+    s4.write(180);
+    s5.write(180);
+    delay(1000);
+    s1.write(0);
+    s4.write(90);
+    s5.write(90);
+    delay(1000);
+    break;
 
-case 'i':
+    case 'n':
+    s1.write(90);
+    s4.write(180);
+    s5.write(180);
+    s6.write(180);
+    delay(1000);
+    s1.write(0);
+    s4.write(90);
+    s5.write(90);
+    s6.write(90);
+    delay(1000);
+    break;
 
-    digitalWrite(3, HIGH);
-    digitalWrite(7, HIGH);
-    delay(500);
-    digitalWrite(3, LOW);
-    digitalWrite(7, LOW);
-    delay(500);
-break;
+    case 'o':
+    s1.write(90);
+    s4.write(180);
+    s6.write(180);
+    delay(1000);
+    s1.write(0);
+    s4.write(90);
+    s6.write(90);
+    delay(1000);
+    break;
 
-case 'j':
+    case 'p':
+    s1.write(90);
+    s2.write(0);
+    s4.write(180);
+    s5.write(180);
+    delay(1000);
+    s1.write(0);
+    s2.write(90);
+    s4.write(90);
+    s5.write(90);
+    delay(1000);
+    break;
 
-    digitalWrite(3, HIGH);
-    digitalWrite(7, HIGH);
-    digitalWrite(12, HIGH);
-    delay(500);
-    digitalWrite(3, LOW);
-    digitalWrite(7, LOW);
-    digitalWrite(12, LOW);
-    delay(500);
-break;
+    case 'q':
+    s1.write(90);
+    s2.write(0);
+    s4.write(180);
+    s5.write(180);
+    s6.write(180);
+    delay(1000);
+    s1.write(0);
+    s2.write(90);
+    s4.write(90);
+    s5.write(90);
+    s6.write(90);
+    delay(1000);
+    break;
 
-case 'k':
+    case 'r':
+    s1.write(90);
+    s2.write(0);
+    s4.write(180);
+    s6.write(180);
+    delay(1000);
+    s1.write(0);
+    s2.write(90);
+    s4.write(90);
+    s6.write(90);
+    delay(1000);
+    break;
 
-    digitalWrite(2, HIGH);
-    digitalWrite(4, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    digitalWrite(4, LOW);
-    delay(500);
-break;
+    case 's':
+    s1.write(90);
+    s2.write(0);
+    s5.write(180);
+    delay(1000);
+    s1.write(0);
+    s2.write(90);
+    s5.write(90);
+    delay(1000);
+    break;
 
-case 'l':
+    case 't':
+    s1.write(90);
+    s2.write(0);
+    s5.write(180);
+    s6.write(180);
+    delay(1000);
+    s1.write(0);
+    s2.write(90);
+    s5.write(90);
+    s6.write(90);
+    delay(1000);
+    break;
 
-    digitalWrite(2, HIGH);
-    digitalWrite(3, HIGH);
-    digitalWrite(4, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    digitalWrite(3, LOW);
-    digitalWrite(4, LOW);
-    delay(500);
-break;
+    case 'u':
+    s4.write(180);
+    s1.write(90);
+    s3.write(0);
+    delay(1000);
+    s4.write(90);
+    s1.write(0);
+    s3.write(90);
+    delay(1000);
+    break;
 
-case 'm':
+    case 'v':
+    s4.write(180);
+    s2.write(0);
+    s1.write(90);
+    s3.write(0);
+    delay(1000);
+    s4.write(90);
+    s2.write(90);
+    s1.write(0);
+    s3.write(90);
+    delay(1000);
+    break;
 
-    digitalWrite(2, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(7, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(7, LOW);
-    delay(500);
-break;
+    case 'w':
+    s2.write(0);
+    s5.write(180);
+    s6.write(180);
+    s3.write(0);
+    delay(1000);
+    s2.write(90);
+    s5.write(90);
+    s6.write(90);
+    s3.write(90);
+    delay(1000);
+    break;
 
-case 'n':
+    case 'x':
+    s4.write(180);
+    s5.write(180); 
+    s1.write(90);
+    s3.write(0);
+    delay(1000);
+    s4.write(90);
+    s5.write(90); 
+    s1.write(0);
+    s3.write(90);
+    delay(1000);
+    break;
 
-    digitalWrite(2, HIGH);
-    digitalWrite(7, HIGH);
-    digitalWrite(4, HIGH);
-    delay(500);  
-    digitalWrite(2, LOW);  
-    digitalWrite(7, LOW);
-    digitalWrite(4, LOW);
-    delay(500);  
-break;
+    case 'y':
+    s1.write(90);
+    s4.write(180);
+    // delay(100);
+    s6.write(180);
+    s3.write(0);
+    s5.write(180);
 
-case 'o':
+    delay(1000);
 
-    digitalWrite(2, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(12, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);  
-    digitalWrite(12, LOW);
-    digitalWrite(4, LOW);
-    delay(500);
-break;
+    s1.write(0);
+    s4.write(90);
+    // delay(100);
+    s6.write(90);
+    s3.write(90);
+    s5.write(90);
 
-case 'p':
-
-    digitalWrite(2, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(3, HIGH);
-    digitalWrite(7, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);  
-    digitalWrite(3, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(7, LOW);
-    delay(500);
-break;
-
-case 'q':
-
-    digitalWrite(2, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(3, HIGH);
-    digitalWrite(7, HIGH);
-    digitalWrite(12, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);  
-    digitalWrite(3, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(7, LOW);
-    digitalWrite(12, LOW);
-    delay(500);
-break;
-
-case 'r':
-
-    digitalWrite(2, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(3, HIGH);
-    digitalWrite(7, HIGH);
-    digitalWrite(12, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);  
-    digitalWrite(3, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(12, LOW);
-    delay(500);
-break;
-
-case 's':
-
-    digitalWrite(3, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(7, HIGH);
-    delay(500);
-    digitalWrite(3, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(7, LOW);
-    delay(500);
-break;
-
-case 't':
-
-    digitalWrite(3, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(7, HIGH);
-    digitalWrite(12, HIGH);
-    delay(500);
-    digitalWrite(3, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(7, LOW);
-    digitalWrite(12, LOW);
-    delay(500);
-break;
-
-case 'u':
-
-    digitalWrite(2, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(13, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(13, LOW);
-    delay(500);
-break;
-
-case 'v':
-
-    digitalWrite(2, HIGH);
-    digitalWrite(3, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(13, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    digitalWrite(3, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(13, LOW);
-    delay(500);
-break;
-
-case 'w':
-
-    digitalWrite(3, HIGH);
-    digitalWrite(7, HIGH);
-    digitalWrite(12, HIGH);
-    digitalWrite(13, HIGH);
-    delay(500);
-    digitalWrite(3, LOW);
-    digitalWrite(7, LOW);
-    digitalWrite(12, LOW);
-    digitalWrite(13, LOW);
-    delay(500);
-break;
-
-case 'x':
-
-    digitalWrite(2, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(7, HIGH);
-    digitalWrite(13, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(7, LOW);
-    digitalWrite(13, LOW);
-    delay(500);
-break;
-
-case 'y':
-
-    digitalWrite(2, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(7, HIGH);
-    digitalWrite(12, HIGH);
-    digitalWrite(13, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(7, LOW);
-    digitalWrite(12, LOW);
-    digitalWrite(13, LOW);
-    delay(500);
-break;
-
-case 'z':
-
-    digitalWrite(2, HIGH);
-    digitalWrite(4, HIGH);
-    digitalWrite(12, HIGH);
-    digitalWrite(13, HIGH);
-    delay(500);
-    digitalWrite(2, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(12, LOW);
-    digitalWrite(13, LOW);
-    delay(500);
-break;
+    delay(1000);
+    break;
+    
+    case 'z':
+    s4.write(180);
+    s6.write(180);
+    s1.write(90);
+    s3.write(0);
+    delay(1000);
+    s4.write(90);
+    s6.write(90);
+    s1.write(0);
+    s3.write(90);
+    delay(1000);
+    break;
 
     }
   }
